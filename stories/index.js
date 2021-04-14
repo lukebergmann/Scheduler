@@ -10,6 +10,10 @@ import InterviewerListItem from "../src/components/InterviewerListItem"
 import InterviewerList from "../src/components/InterviewerList"
 import Button from "../src/components/Button";
 import Appointment from "components/Appointment/index"
+import Header from "../src/components/Appointment/Header"
+import Empty from "../src/components/Appointment/Empty"
+import Show from "../src/components/Appointment/Show"
+import Confirm from "../src/components/Appointment/Confirm"
 
 // STYLES
 import "index.scss";
@@ -143,10 +147,23 @@ storiesOf("InterviewerList", module)
   ));
 
 
-  // Stories for Appointments
-  storiesOf("Appointment", module)
+// Stories for Appointments
+storiesOf("Appointment", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }]
   })
   .add("Appointment", () => <Appointment />)
-  .add("Appointment", () => <Appointment time="12pm"/>)
+  .add("Appointment with Time", () => <Appointment time="12pm" />)
+  .add("Header", () => <Header time="12pm" />)
+  .add("Empty", () => <Empty onAdd={action("onAdd")} />)
+  .add("Show", () => <Show
+    student="Lydia Miller-Jones"
+    interviewer={interviewer}
+    onEdit={action("onEdit")}
+    onDelete={action("onDelete")}
+  />)
+  .add("Confirm", () => <Confirm
+    message="Delete the appointment?"
+    onConfirm={action("onConfirm")}
+    onCancel={action("onCancel")}
+  />)
