@@ -1,19 +1,23 @@
 // LIBRARY
+import { action } from "@storybook/addon-actions";
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 
 // COMPONENTS
-import DayListItem from "../src/components/DayListItem"
 import DayList from "../src/components/DayList"
+import DayListItem from "../src/components/DayListItem"
 import InterviewerListItem from "../src/components/InterviewerListItem"
 import InterviewerList from "../src/components/InterviewerList"
-import Button from "../src/components/Button";
 import Appointment from "components/Appointment/index"
-import Header from "../src/components/Appointment/Header"
-import Empty from "../src/components/Appointment/Empty"
-import Show from "../src/components/Appointment/Show"
+import Button from "../src/components/Button";
 import Confirm from "../src/components/Appointment/Confirm"
+import Delete from "../src/components/Appointment/Deleting"
+import DeleteError from "../src/components/Appointment/DeleteError"
+import Empty from "../src/components/Appointment/Empty"
+import EditError from "../src/components/Appointment/EditError"
+import Header from "../src/components/Appointment/Header"
+import Saving from "../src/components/Appointment/Saving"
+import Show from "../src/components/Appointment/Show"
 
 // STYLES
 import "index.scss";
@@ -153,7 +157,7 @@ storiesOf("Appointment", module)
     backgrounds: [{ name: "white", value: "#fff", default: true }]
   })
   .add("Appointment", () => <Appointment />)
-  .add("Appointment with Time", () => <Appointment time="12pm" />)
+  // .add("Appointment with Time", () => <Appointment time="12pm" />)
   .add("Header", () => <Header time="12pm" />)
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
   .add("Show", () => <Show
@@ -166,4 +170,14 @@ storiesOf("Appointment", module)
     message="Delete the appointment?"
     onConfirm={action("onConfirm")}
     onCancel={action("onCancel")}
+  />)
+  .add("Saving", () => <Saving message="Saving"/>)
+  .add("Delete", () => <Delete message="Deleting"/>)
+  .add("EditError", () => <EditError 
+    message="Could not edit appointment"
+    onClose={action("onClose")}
+  />)
+  .add("DeleteError", () => <DeleteError 
+    message="Could not delete appointment"
+    onClose={action("onClose")}
   />)
