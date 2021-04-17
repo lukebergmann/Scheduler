@@ -1,34 +1,32 @@
 // LIBRARY
 import { action } from "@storybook/addon-actions";
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 import { storiesOf } from "@storybook/react";
 
 // COMPONENTS
-import Appointment from "components/Appointment/index"
-import Button from "../src/components/Button"
-import Confirm from "../src/components/Appointment/Confirm"
-import DayList from "../src/components/DayList"
-import DayListItem from "../src/components/DayListItem"
-import Delete from "../src/components/Appointment/Deleting"
-import DeleteError from "../src/components/Appointment/DeleteError"
-import Empty from "../src/components/Appointment/Empty"
-import EditError from "../src/components/Appointment/EditError"
-import Form from "../src/components/Appointment/Form"
-import Header from "../src/components/Appointment/Header"
-import InterviewerList from "../src/components/InterviewerList"
-import InterviewerListItem from "../src/components/InterviewerListItem"
-import Saving from "../src/components/Appointment/Saving"
-import Show from "../src/components/Appointment/Show"
+import Appointment from "components/Appointment/index";
+import Button from "../src/components/Button";
+import Confirm from "../src/components/Appointment/Confirm";
+import DayList from "../src/components/DayList";
+import DayListItem from "../src/components/DayListItem";
+import Delete from "../src/components/Appointment/Deleting";
+import DeleteError from "../src/components/Appointment/DeleteError";
+import Empty from "../src/components/Appointment/Empty";
+import EditError from "../src/components/Appointment/EditError";
+import Form from "../src/components/Appointment/Form";
+import Header from "../src/components/Appointment/Header";
+import InterviewerList from "../src/components/InterviewerList";
+import InterviewerListItem from "../src/components/InterviewerListItem";
+import Saving from "../src/components/Appointment/Saving";
+import Show from "../src/components/Appointment/Show";
 
 // STYLES
 import "index.scss";
 
-
-
 //Stories for button.js
 storiesOf("Button", module)
   .addParameters({
-    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
   })
   .add("Base", () => <Button>Base</Button>)
   .add("Confirm", () => <Button confirm>Confirm</Button>)
@@ -42,11 +40,10 @@ storiesOf("Button", module)
     </Button>
   ));
 
-
 // Stories for DayListItem.js
 storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
   .addParameters({
-    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
   })
   .add("Unselected", () => <DayListItem name="Monday" spots={5} />)
   .add("Selected", () => <DayListItem name="Monday" spots={5} selected />)
@@ -85,18 +82,16 @@ storiesOf("DayList", module)
     <DayList days={days} day={"Tuesday"} setDay={action("setDay")} />
   ));
 
-
-
 // Stories for InterviewListItem
 const interviewer = {
   id: 1,
   name: "Sylvia Palmer",
-  avatar: "https://i.imgur.com/LpaY82x.png"
+  avatar: "https://i.imgur.com/LpaY82x.png",
 };
 
 storiesOf("InterviewerListItem", module)
   .addParameters({
-    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
   })
   .add("Unselected", () => (
     <InterviewerListItem
@@ -118,24 +113,22 @@ storiesOf("InterviewerListItem", module)
       id={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar}
-      setInterviewer={event => action("setInterviewer")(interviewer.id)}
+      setInterviewer={(event) => action("setInterviewer")(interviewer.id)}
     />
   ));
 
-
-
-// Stories for InterviewerList 
+// Stories for InterviewerList
 const interviewers = [
   { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
   { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
   { id: 3, name: "Mildred Nazir", avatar: "https://i.imgur.com/T2WwVfS.png" },
   { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
-  { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
+  { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" },
 ];
 
 storiesOf("InterviewerList", module)
   .addParameters({
-    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
   })
   .add("Initial", () => (
     <InterviewerList
@@ -151,11 +144,10 @@ storiesOf("InterviewerList", module)
     />
   ));
 
-
 // Stories for Appointments
 storiesOf("Appointment", module)
   .addParameters({
-    backgrounds: [{ name: "white", value: "#fff", default: true }]
+    backgrounds: [{ name: "white", value: "#fff", default: true }],
   })
   .add("Appointment", () => <Appointment />)
   // .add("Appointment with Time", () => <Appointment time="12pm" />)
@@ -177,36 +169,48 @@ storiesOf("Appointment", module)
   ))
   .add("Header", () => <Header time="12pm" />)
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
-  .add("Show", () => <Show
-    student="Lydia Miller-Jones"
-    interviewer={interviewer}
-    onEdit={action("onEdit")}
-    onDelete={action("onDelete")}
-  />)
-  .add("Confirm", () => <Confirm
-    message="Delete the appointment?"
-    onConfirm={action("onConfirm")}
-    onCancel={action("onCancel")}
-  />)
+  .add("Show", () => (
+    <Show
+      student="Lydia Miller-Jones"
+      interviewer={interviewer}
+      onEdit={action("onEdit")}
+      onDelete={action("onDelete")}
+    />
+  ))
+  .add("Confirm", () => (
+    <Confirm
+      message="Delete the appointment?"
+      onConfirm={action("onConfirm")}
+      onCancel={action("onCancel")}
+    />
+  ))
   .add("Saving", () => <Saving message="Saving" />)
   .add("Delete", () => <Delete message="Deleting" />)
-  .add("EditError", () => <EditError
-    message="Could not edit appointment"
-    onClose={action("onClose")}
-  />)
-  .add("DeleteError", () => <DeleteError
-    message="Could not delete appointment"
-    onClose={action("onClose")}
-  />)
-  .add("Edit", () => <Form
-    name="Lydia Miller-Jones"
-    interviewers={interviewers}
-    interviewer={interviewer.id}
-    onSave={action("onSave")}
-    onCancel={action("onCancel")}
-  />)
-  .add("Create", () => <Form
-    interviewers={interviewers}
-    onSave={action("onSave")}
-    onCancel={action("onCancel")}
-  />)
+  .add("EditError", () => (
+    <EditError
+      message="Could not edit appointment"
+      onClose={action("onClose")}
+    />
+  ))
+  .add("DeleteError", () => (
+    <DeleteError
+      message="Could not delete appointment"
+      onClose={action("onClose")}
+    />
+  ))
+  .add("Edit", () => (
+    <Form
+      name="Lydia Miller-Jones"
+      interviewers={interviewers}
+      interviewer={interviewer.id}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+    />
+  ))
+  .add("Create", () => (
+    <Form
+      interviewers={interviewers}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+    />
+  ));

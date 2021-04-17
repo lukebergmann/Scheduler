@@ -1,12 +1,7 @@
 // LIBRARY
-import React from "react"
-
+import React from "react";
 
 export default function DeleteError(props) {
-
-
-
-
   return (
     <main className="appointment__card appointment__card--error">
       <section className="appointment__error-message">
@@ -20,5 +15,5 @@ export default function DeleteError(props) {
         onClick={props.onClose}
       />
     </main>
-  )
+  );
 }

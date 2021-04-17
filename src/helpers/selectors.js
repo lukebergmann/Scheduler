@@ -1,6 +1,6 @@
-export function getAppointmentsForDay (state, selectedDay) {
+export function getAppointmentsForDay(state, selectedDay) {
   //... returns an array of appointments for that day
-  const specificDay = []
+  const specificDay = [];
   for (let day of state.days) {
     if (day.name === selectedDay) {
       for (let appointment in state.appointments) {
@@ -11,11 +11,11 @@ export function getAppointmentsForDay (state, selectedDay) {
     }
   }
   return specificDay;
-};
+}
 
-export function getInterviewersForDay (state, selectedDay) {
+export function getInterviewersForDay(state, selectedDay) {
   //... returns an array of interviewers for that day
-  const specificInterviewer = []
+  const specificInterviewer = [];
   for (let day of state.days) {
     if (day.name === selectedDay) {
       for (let interviewer in state.interviewers) {
@@ -26,21 +26,17 @@ export function getInterviewersForDay (state, selectedDay) {
     }
   }
   return specificInterviewer;
-};
+}
 
-export function getInterview (state, interview) {
-
+export function getInterview(state, interview) {
   //Function should return a new object containing the new data passed in
   //If it is empty, return null
   if (interview === null) {
-    return null
-  };
+    return null;
+  }
   const newInterview = {
     student: interview.student,
-    interviewer: state.interviewers[interview.interviewer]
-  }
-  return newInterview
-};
-
-
-
+    interviewer: state.interviewers[interview.interviewer],
+  };
+  return newInterview;
+}
