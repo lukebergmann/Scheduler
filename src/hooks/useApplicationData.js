@@ -8,6 +8,24 @@ export default function useApplicationData() {
     appointments: {},
     interviewers: {},
   });
+// Passing some major credit to Devin MacGillivray on the below function. https://github.com/devhmac
+  const findDailySpotCount = (nameOfDay, days, appointments) => {
+    const dayToUpdate = days.find((day) => day.name === nameOfDay);
+    let addToCount = 0;
+    for (let app in appointments) {
+      if (
+        appointments[app].interview === null &&
+        dayToUpdate.appointments.includes(appointments[app].id)
+      ) {
+        addToCount++;
+      }
+    }
+    return { ...dayToUpdate, spots: addToCount };
+  };
+
+  const newDaysArr = (dayObj, daysArr) => {
+    return daysArr.map((day) => (day.name === dayObj.name ? dayObj : day));
+  };
 
   function bookInterview(id, interview) {
     const appointment = {
@@ -19,10 +37,10 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment,
     };
-
+    const days = newDaysArr(findDailySpotCount(state.day, state.days, appointments), state.days)
     const url = `/api/appointments/${id}`;
     return axios.put(url, appointment).then(() => {
-      setState({ ...state, appointments });
+      setState({ ...state, appointments, days });
     });
   }
 
@@ -36,10 +54,10 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment,
     };
-
+    const days = newDaysArr(findDailySpotCount(state.day, state.days, appointments), state.days)
     const url = `/api/appointments/${id}`;
     return axios.delete(url, { interview: null }).then(() => {
-      setState({ ...state, appointments });
+      setState({ ...state, appointments, days });
     });
   }
 
