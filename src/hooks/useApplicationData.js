@@ -8,7 +8,7 @@ export default function useApplicationData() {
     appointments: {},
     interviewers: {},
   });
-// Passing some major credit to Devin MacGillivray on the below function. https://github.com/devhmac
+  // Passing some major credit to Devin MacGillivray on the below function. https://github.com/devhmac
   const findDailySpotCount = (nameOfDay, days, appointments) => {
     const dayToUpdate = days.find((day) => day.name === nameOfDay);
     let addToCount = 0;
@@ -37,7 +37,10 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment,
     };
-    const days = newDaysArr(findDailySpotCount(state.day, state.days, appointments), state.days)
+    const days = newDaysArr(
+      findDailySpotCount(state.day, state.days, appointments),
+      state.days
+    );
     const url = `/api/appointments/${id}`;
     return axios.put(url, appointment).then(() => {
       setState({ ...state, appointments, days });
@@ -54,7 +57,10 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment,
     };
-    const days = newDaysArr(findDailySpotCount(state.day, state.days, appointments), state.days)
+    const days = newDaysArr(
+      findDailySpotCount(state.day, state.days, appointments),
+      state.days
+    );
     const url = `/api/appointments/${id}`;
     return axios.delete(url, { interview: null }).then(() => {
       setState({ ...state, appointments, days });
