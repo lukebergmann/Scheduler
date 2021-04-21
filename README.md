@@ -8,6 +8,14 @@
 !["Screenshot of Editing an Interview"](https://github.com/lukebergmann/scheduler/blob/master/docs/EditInterview.gif?raw=true)
 #### Screenshot of Deleting an Interview
 !["Screenshot of Deleting an Interview"](https://github.com/lukebergmann/scheduler/blob/master/docs/DeleteInterview.gif?raw=true)
+
+## Code Stack
+* Front-End: HTML, SASS, React.
+
+* Back-end: Node, Express, Postgres.
+
+* Test: Jest, Storybook, and Cypress.
+
 ## Setup
 
 * Install dependencies with `npm install`.
