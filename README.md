@@ -9,12 +9,12 @@
 #### Screenshot of Deleting an Interview
 !["Screenshot of Deleting an Interview"](https://github.com/lukebergmann/scheduler/blob/master/docs/DeleteInterview.gif?raw=true)
 
-## Code Stack
+## Tech Stack
 * Front-End: HTML, SASS, React.
 
 * Back-end: Node, Express, Postgres.
 
-* Test: Jest, Storybook, and Cypress.
+* Testing: Jest, Storybook, and Cypress.
 
 ## Setup
 
