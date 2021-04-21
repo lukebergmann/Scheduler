@@ -1,5 +1,6 @@
 // LIBRARY
 import React from "react";
+import PropTypes from "prop-types";
 // COMPONENTS
 import InterviewerListItem from "components/InterviewerListItem";
 // STYLES
@@ -25,3 +26,6 @@ export default function InterviewerList(props) {
     </section>
   );
 }
+InterviewerList.propTypes = {
+  interviewers: PropTypes.array.isRequired,
+};

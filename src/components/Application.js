@@ -1,6 +1,6 @@
 // LIBRARY
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, {  } from "react";
+// import axios from "axios";
 import useApplicationData from "../../src/hooks/useApplicationData";
 // COMPONENTS
 import DayList from "components/DayList";
